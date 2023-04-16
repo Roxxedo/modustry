@@ -7,7 +7,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props }
 }
 
-export default function Mods({ data, readme }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Mod({ data, readme }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
             <Head />

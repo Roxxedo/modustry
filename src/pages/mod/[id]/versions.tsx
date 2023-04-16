@@ -9,7 +9,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props }
 }
 
-export default function Mods({ gjson, data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Versions({ gjson, data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
             <Head />

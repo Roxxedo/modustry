@@ -8,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return { props }
 }
 
-export default function Mods({ data, index }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Modpacks({ data, index }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
             <Head />
