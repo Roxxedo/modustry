@@ -21,11 +21,13 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "18.2.0",
+    "react-image": "^4.1.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/bootstrap": "^5.2.6"
+    "@types/bootstrap": "^5.2.6",
+    "@types/jsdom": "^21.1.1"
   }
 }

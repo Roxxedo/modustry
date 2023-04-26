@@ -35,3 +35,7 @@ html, body {
 .modsmain section {
     padding: 1rem 1rem;
 }
+
+.fiximg img {
+    max-width: 100%;
+}

@@ -19,7 +19,8 @@ export const getProps = async (ctx: GetServerSidePropsContext) => {
     const pages: Data[][]= sliceIntoChunks(json, rlimit)
     let index: number = 0;
     if (page != undefined) index = page as unknown as number
-    const data: Data[] = pages[index]
+    var data: Data[] = pages[index]
+    if (data == undefined) data = []
 
     var props = { data, index }
     return props

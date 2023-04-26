@@ -22,27 +22,8 @@ export const getProps = async (ctx: GetStaticPropsContext) => {
     const processedContent = await remark()
     .use(html)
     .process(md);
-    const readme = processedContent.toString()
+    const readme = processedContent.toString()    
 
     var props = { data, readme }
     return props
-}
-
-export const getPaths = async () => {
-    const res = await fetch(`${API_URL}/api/mod`)
-    const data: Data[] = await res.json()
-
-    const arr: string[] = []
-
-    for (var index in data) {
-        arr.push(data[index].name)
-    }
-
-    const paths = arr.map((id) => {
-        return {
-            params: { id },
-        }
-    })
-
-    return paths
 }

@@ -1,4 +1,6 @@
 import Head from '@/components/Head'
+import Navbar from '@/components/navbars/DefaultNavbar';
+import Markdown from '@/components/utils/Markdown';
 import { getProps } from '@/lib/about'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
@@ -13,15 +15,9 @@ export default function About({ readme }: InferGetServerSidePropsType<typeof get
             <Head />
             <main className='main bg-dark text-white'>
                 <div className="container">
-                    <header className="d-flex justify-content-center py-3 newcolor">
-                        <ul className="nav nav-pills">
-                            <li className="nav-item"><a href="/mods" className="nav-link">Mods</a></li>
-                            <li className="nav-item"><a href="/modpacks" className="nav-link">Modpacks</a></li>
-                            <li className="nav-item"><a href="/textures" className="nav-link">Texture Packs</a></li>
-                        </ul>
-                    </header>
+                    <Navbar />
                     <section>
-                    <div dangerouslySetInnerHTML={{ __html: readme }} />
+                        <Markdown value={readme} />
                     </section>
                 </div>
             </main>
