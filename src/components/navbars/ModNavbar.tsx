@@ -11,9 +11,9 @@ export default function ModNavbar({ value }: GenericInputPropsData) {
         <>
             <div className='d-flex justify-content-center'>
                 <ul className="nav nav-pills">
-                    <li className="nav-item"><a href={"/mod/" + value.name} className={"nav-link" + state.description}>Description</a></li>
-                    <li className="nav-item"><a href={"/mod/" + value.name + "/changelog"} className={"nav-link" + state.changelog}>Changelog</a></li>
-                    <li className="nav-item"><a href={"/mod/" + value.name + "/versions"} className={"nav-link" + state.versions}>Versions</a></li>
+                    <li className="nav-item"><a href={"/mod/" + value.repo.split('/')[1]} className={"nav-link" + state.description}>Description</a></li>
+                    <li className="nav-item"><a href={"/mod/" + value.repo.split('/')[1] + "/changelog"} className={"nav-link" + state.changelog}>Changelog</a></li>
+                    <li className="nav-item"><a href={"/mod/" + value.repo.split('/')[1] + "/versions"} className={"nav-link" + state.versions}>Versions</a></li>
                 </ul>
             </div>
         </>

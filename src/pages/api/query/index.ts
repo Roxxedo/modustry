@@ -1,27 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-    repo: string,
-    name: string,
-    author: string,
-    lastUpdated: string,
-    stars: number,
-    minGameVersion: string,
-    hasScripts: boolean,
-    hasJava: boolean,
-    description: string
-}
+import { Data as MindustryData } from '@/lib/types'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data[]>
+  res: NextApiResponse<MindustryData[]>
 ) {
     const mods = await fetch('https://raw.githubusercontent.com/Anuken/MindustryMods/master/mods.json')
-    const json: Data[] = await mods.json()
+    const json: MindustryData[] = await mods.json()
 
-    const { version, q } = req.query
+    const { q } = req.query
 
-    var result: Data[] = []
+    var result: MindustryData[] = []
     for (var i in json) {
         if (json[i].name.search(q as string) > -1) {
             if (!result.includes(json[i])) {
@@ -40,13 +30,8 @@ export default async function handler(
                 result.push(json[i])
             }
         }
-
-        if (json[i].minGameVersion == version) {
-            if (!result.includes(json[i])) {
-                result.push(json[i])
-            }
-        }
     }
 
-    res.send(result)
+    res.status(200).json(result)
+    res.end()
 }

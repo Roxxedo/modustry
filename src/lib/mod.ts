@@ -13,7 +13,7 @@ const API_URL = process.env.API_URL
 export const getProps = async (ctx: GetStaticPropsContext) => {
     const { id } = ctx.params as IParams
 
-    const res = await fetch(`${API_URL}/api/mod/${id}`)
+    const res = await fetch(`${API_URL}/api/mods/${id}`)
     const data: Data = await res.json()
 
     const resmd = await fetch(`https://raw.githubusercontent.com/${data.repo}/master/README.md`)

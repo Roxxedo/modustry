@@ -23,7 +23,7 @@ export default function Versions({ gjson, data }: InferGetServerSidePropsType<ty
                     <section>
                         <ModInfo value={data} />
                         <ModNavbar value={data} />
-                        <div className="list-group list-group-flush border-bottom scrollarea">
+                        <div className="list-group list-group-flush scrollarea">
                                 {gjson.map((value: Github, _index: number, _array: Github[]) => (
                                     <>
                                         <ListElement value={value} />
