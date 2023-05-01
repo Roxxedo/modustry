@@ -8,7 +8,7 @@ export default async function handler(
 ) {
     const id = req.query.id
     
-    const db = await fetch('https://api.github.com/repos/Anuken/Mindustry/releases')
+    const db = await fetch('https://api.github.com/repos/Anuken/Mindustry/releases?per_page=100')
     const json: ReleaseData[] = await db.json()
 
     for (var i in json) {
