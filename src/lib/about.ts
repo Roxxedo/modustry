@@ -1,16 +1,9 @@
 import { GetStaticPropsContext } from "next";
-import { remark } from "remark";
-import html from 'remark-html'
+import { processMarkdown } from "./utils";
 
 export const getProps = async (ctx: GetStaticPropsContext) => {
-    const resmd = await fetch(`https://raw.githubusercontent.com/Roxxedo/modustry/master/README.md`)
-    const md: string = await resmd.text()
+    const res = await fetch(`https://raw.githubusercontent.com/Roxxedo/modustry/master/README.md`)
+    const text: string = await res.text()
 
-    const processedContent = await remark()
-        .use(html)
-        .process(md);
-    const readme = processedContent.toString()
-
-    var props = { readme }
-    return readme
+    return processMarkdown(text)
 }

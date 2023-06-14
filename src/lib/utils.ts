@@ -1,4 +1,6 @@
 import { Data } from '@/lib/types'
+import { remark } from 'remark';
+import html from 'remark-html';
 
 export function sliceIntoChunks(arr: Data[], chunkSize: number) {
     const res = [];
@@ -7,4 +9,11 @@ export function sliceIntoChunks(arr: Data[], chunkSize: number) {
         res.push(chunk);
     }
     return res;
+}
+
+export async function processMarkdown(md: string) {
+    const processedContent = await remark()
+        .use(html)
+        .process(md);
+    return processedContent.toString()
 }

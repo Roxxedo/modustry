@@ -1,11 +1,11 @@
 import Head from '@/components/Head'
-import Navbar from '@/components/navbars/DefaultNavbar';
-import Markdown from '@/components/utils/Markdown';
+import Navbar from '@/components/Navbar';
+import Markdown from '@/components/Markdown';
 import { getProps } from '@/lib/about'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const props = getProps(context);
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    const props = getProps(ctx);
     return { props }
 }
 
@@ -13,7 +13,7 @@ export default function About({ readme }: InferGetServerSidePropsType<typeof get
     return (
         <>
             <Head />
-            <main className='main bg-dark text-white'>
+            <main className='main text-white'>
                 <div className="container">
                     <Navbar />
                     <section>

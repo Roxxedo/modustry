@@ -3,8 +3,8 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { getProps } from '@/lib/mod'
 import ModNavbar from '@/components/navbars/ModNavbar'
 import ModInfo from '@/components/mod/ModInfo'
-import Markdown from '@/components/utils/Markdown'
-import Navbar from '@/components/navbars/DefaultNavbar'
+import Markdown from '@/components/Markdown'
+import Navbar from '@/components/Navbar'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const props = getProps(context)
@@ -15,7 +15,7 @@ export default function Mod({ data, readme }: InferGetServerSidePropsType<typeof
     return (
         <>
             <Head />
-            <main className='modsmain bg-dark text-white'>
+            <main className='modsmain text-white'>
                 <div className="container">
                     <Navbar />
                     <section>

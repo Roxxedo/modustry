@@ -1,29 +1,29 @@
-import Head from '@/components/Head'
-import ListElement from '@/components/mod/ChangelogListElement'
-import ModInfo from '@/components/mod/ModInfo'
-import Navbar from '@/components/navbars/DefaultNavbar'
-import ModNavbar from '@/components/navbars/ModNavbar'
-import { getProps } from '@/lib/mod/changelog'
-import { Github } from '@/lib/types'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import getProps from '@/lib/default'
+
+import CustomHead from "@/components/Head"
+import Navbar from '@/components/Navbar'
+import ModInfo from "@/components/mod/ModInfo"
+import ModNavbar from "@/components/navbars/ModNavbar"
+import ListElement from "@/components/mod/ChangelogListElement"
+import { GithubRelease } from "@/lib/types"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const props = getProps(context)
-    return { props }
+    return { props: await getProps(context) }
 }
 
 export default function Changelog({ gjson, data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
-            <Head />
-            <main className='modsmain bg-dark text-white'>
+            <CustomHead title='' description='' />
+            <main className='modsmain text-white'>
                 <div className="container">
                     <Navbar />
                     <section>
                         <ModInfo value={data} />
                         <ModNavbar value={data} />
                         <div className="list-group list-group-flush scrollarea">
-                            {gjson.map((value: Github, _index: number, _array: Github[]) => (
+                            {gjson.map((value: GithubRelease, _index: number, _array: GithubRelease[]) => (
                                 <>
                                     <ListElement value={value} />
                                 </>

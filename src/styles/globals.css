@@ -1,7 +1,7 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
-    background: #212529 !important;
+    background: #16181c !important;
 }
 
 .nav-link {
@@ -32,10 +32,40 @@ html, body {
     padding: 0;
 }
 
+.main h3 {
+    font-size: 4rem;
+    text-align: center;
+}
+
 .modsmain section {
     padding: 1rem 1rem;
 }
 
 .fiximg img {
     max-width: 100%;
+}
+
+.c-3f4549 {
+    --bs-btn-bg: #3f4549 !important;
+    --bs-btn-color: #fff !important
+}
+
+.c-e5b276 {
+    --bs-btn-bg: #e5b276 !important;
+    --bs-btn-color: #3f4549  !important
+}
+
+.c-e5b276-disabled {
+    --bs-btn-disabled-bg: #e5b276 !important;
+    --bs-btn-disabled-color: #3f4549  !important;
+    --bs-btn-disabled-opacity: 1 !important;
+}
+
+.bg-26292f {
+    background: #26292f;
+}
+
+.dropdown-menu {
+    max-height: 280px;
+    overflow-y: auto;
 }

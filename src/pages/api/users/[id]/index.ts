@@ -22,5 +22,6 @@ export default async function handler(
             res.end()
         }
     }
+
     res.status(404).end()
 }

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { ReleaseData, ReleaseAssetData } from '@/lib/api/types'
+import { ReleaseData, ReleaseAssetData } from '@/lib/types'
+import { versionList } from '@/lib/api/versions'
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,13 +9,8 @@ export default async function handler(
 ) {
     const id = req.query.id
     
-    const db = await fetch(`https://api.github.com/repos/Anuken/Mindustry/releases?per_page=100`)
-    const json: ReleaseData[] = await db.json()
-
-    var versions = []
-    for (var i in json) {
-        versions.push(json[i].tag_name.replace('v', ''))
-    }
+    const versions = await versionList()
+    
     res.status(200).json(versions)
     res.end()
 }

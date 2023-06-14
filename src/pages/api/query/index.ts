@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { Data as MindustryData } from '@/lib/types'
+import { query } from '@/lib/api/query'
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,26 +12,7 @@ export default async function handler(
 
     const { q } = req.query
 
-    var result: MindustryData[] = []
-    for (var i in json) {
-        if (json[i].name.search(q as string) > -1) {
-            if (!result.includes(json[i])) {
-                result.push(json[i])
-            }
-        }
-
-        if (json[i].author.search(q as string) > -1) {
-            if (!result.includes(json[i])) {
-                result.push(json[i])
-            }
-        }
-
-        if (json[i].repo.search(q as string) > -1) {
-            if (!result.includes(json[i])) {
-                result.push(json[i])
-            }
-        }
-    }
+    const result = query(String(q), json)
 
     res.status(200).json(result)
     res.end()

@@ -6,7 +6,7 @@ import styles from '@/styles/Home.module.css'
 import ListElement from '@/components/mod/VersionsListElement'
 import ModNavbar from '@/components/navbars/ModNavbar'
 import ModInfo from '@/components/mod/ModInfo'
-import Navbar from '@/components/navbars/DefaultNavbar'
+import Navbar from '@/components/Navbar'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const props = getProps(context)
@@ -17,7 +17,7 @@ export default function Versions({ gjson, data }: InferGetServerSidePropsType<ty
     return (
         <>
             <Head />
-            <main className='modsmain bg-dark text-white'>
+            <main className='modsmain text-white'>
                 <div className="container">
                     <Navbar />
                     <section>

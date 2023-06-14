@@ -7,8 +7,8 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import { useCallback, useEffect, useState } from "react"
 import Navbar from "@/components/Navbar"
 import ListElement from "@/components/ListElement"
-import { textureFilter } from "@/lib/filter"
 import { query as querySearch } from "@/lib/api/query"
+import { modpackFilter } from "@/lib/filter"
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const props = getProps(ctx)
@@ -16,8 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 }
 
 export default function Mods({ data, pageIndex, limit }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const pages: Data[][]= sliceIntoChunks(textureFilter(data), limit)
-    
+    const [pages, setPages] = useState<Data[][]>(sliceIntoChunks(modpackFilter(data), limit))
     const [index, setIndex] = useState(1)
     const [query, setQuery] = useState('')
     const [results, setResults] = useState<Data[]>(pages[(index - 1)])
@@ -40,9 +39,17 @@ export default function Mods({ data, pageIndex, limit }: InferGetServerSideProps
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const query = event.target.value
         setQuery(query)
-        if(query.length) setResults(textureFilter(querySearch(query, data)))
+        if(query.length) setResults(modpackFilter(querySearch(query, data)))
         else setResults(pages[(index -1)])
     }, [index])
+
+    const onFocus = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+        setPages(sliceIntoChunks(results, limit))
+    }, [pages])
+
+    const onBlur = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+        setPages(sliceIntoChunks(data, limit))
+    } ,[pages])
 
     /*
     useEffect(() => {
@@ -95,13 +102,13 @@ export default function Mods({ data, pageIndex, limit }: InferGetServerSideProps
 
     return (
         <>
-            <CustomHead title='Search Textures - Modustry' description='' />
+            <CustomHead title='Search Mods - Modustry' description='' />
             <main className='mainmods text-white'>
                 <div className="container">
                     <Navbar />
                     <section>
                         <div className="list-group list-group-flush scrollarea">
-                            <input className='form-control rounded bg-dark text-white mb-2' type='search' placeholder="Search mods..." value={query} onChange={onChange} />
+                            <input className='form-control rounded bg-dark text-white mb-2' type='search' placeholder="Search mods..." value={query} onChange={onChange} onFocus={onFocus} onBlur={onBlur} />
                             {results.map((value: Data, _index: number, _array: Data[]) => (
                                 <>
                                     <ListElement value={value} key={value.name} />

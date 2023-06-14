@@ -8,7 +8,7 @@ export default function ModNavbar({ value }: GenericInputPropsData) {
     if (router.pathname == "/mod/[id]") { state.description = " active" }
     if (router.pathname == "/mod/[id]/changelog") { state.changelog = " active" }
     if (router.pathname == "/mod/[id]/versions") { state.versions = " active" }
-    
+
     return (
         <>
             <div className='d-flex justify-content-center'>
