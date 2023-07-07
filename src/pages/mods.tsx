@@ -79,7 +79,7 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
                 pagination[3].content = index - 1
                 pagination[2].content = index - 2
                 pagination[1].content = index - 3
-            }
+            } 
         }
     }
 
@@ -92,12 +92,9 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
 
     useEffect(() => {
         require("bootstrap/dist/js/bootstrap.bundle.min.js");
-    }, [version]);
-
-    useEffect(() => {
         setPages(sliceIntoChunks(data, perPage))
         setResults(pages[(index - 1)])
-    }, [results])
+    }, []);
 
     pagination.update(index)
 
@@ -110,40 +107,20 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
                     <section>
                         <div className="list-group list-group-flush scrollarea">
                             <div className="d-flex p-2 bg-26292f rounded-4 mb-2 align-items-center">
-                                <input className='form-control rounded bg-dark text-white w-50' style={{width: '70%'}} type='search' placeholder="Search mods..." value={query} onChange={onChange} onFocus={onFocus} onBlur={onBlur} />
-                                <hr className="vr mx-2" />
-                                <a className="pe-2 text-white text-decoration-none">Game Version</a>
-                                <div className="dropdown">
-                                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {version}
-                                  </button>
-                                    <ul className="dropdown-menu scroll-menu scroll-menu-2x" aria-labelledby="dropdownMenuButton1">
-                                        <li><a className="dropdown-item" onClick={() => { setVersion("Select...") }}>None</a></li>
-                                        {versions.map((value: string, index: number, array: string[]) => (
-                                          <>
-                                            <li><a className="dropdown-item" onClick={() => { setVersion(value) }}>{value}</a></li>
-                                          </>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <hr className="vr mx-2" />
-                                <a className="pe-2 text-white text-decoration-none">Show per page</a>
-                                <div className="dropdown">
-                                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {perPage}
-                                  </button>
-                                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <li><a className="dropdown-item" onClick={() => { setPerPage(5) }}>5</a></li>
-                                    <li><a className="dropdown-item" onClick={() => { setPerPage(10) }}>10</a></li>
-                                    <li><a className="dropdown-item" onClick={() => { setPerPage(20) }}>20</a></li>
-                                    <li><a className="dropdown-item" onClick={() => { setPerPage(25) }}>25</a></li>
-                                    <li><a className="dropdown-item" onClick={() => { setPerPage(50) }}>50</a></li>
-                                  </ul>
-                                </div>
+                                <input 
+                                    className='form-control rounded bg-dark text-white w-100' 
+                                    style={{width: '70%'}} 
+                                    type='search' 
+                                    placeholder="Search mods..." 
+                                    value={query} 
+                                    onChange={onChange} 
+                                    onFocus={onFocus} 
+                                    onBlur={onBlur} 
+                                />
                             </div>
-                            {results.map((value: Data, _index: number, _array: Data[]) => (
+                            {pages[(index - 1)].map((value: Data, _index: number, _array: Data[]) => (
                                 <>
-                                    <ListElement value={value} key={value.name} />
+                                    <ListElement value={value} key={value.repo} />
                                 </>
                             ))}
                         </div>

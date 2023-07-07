@@ -24,7 +24,7 @@ export default function Home() {
                     <section className='pt-5'>
                         <div className="row pb-5">
                           <div className="col d-flex flex-column position-static">
-                            <h3 className="mb-0">Find what you want, quickly and easily</h3>
+                            <h3 className="mb-4">Find what you want, quickly and easily</h3>
                           </div>
                           <div className="col-auto d-none d-lg-block">
                             <svg className="rounded-3 bd-placeholder-img" width="500" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
@@ -36,7 +36,7 @@ export default function Home() {
                             <svg className="rounded-3 bd-placeholder-img" width="500" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                           </div>
                           <div className="col d-flex flex-column position-static">
-                            <h3 className="mb-0">Find what you want, quickly and easily</h3>
+                            <h3 className="mb-0">Follow projects you love</h3>
                           </div>
                         </div>
                         <div className='col py-5' />
