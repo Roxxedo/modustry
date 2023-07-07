@@ -64,7 +64,7 @@ export type GenericInputPropsData = {
 }
 
 export type GenericInputPropsGithub = {
-    value: Github
+    value: GithubRelease
 }
 
 export type GenericInputPropsString = {
