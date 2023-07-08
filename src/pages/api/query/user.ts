@@ -1,7 +1,8 @@
-import { UserData } from '@/lib/api/types'
+import { UserData } from '@/lib/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { Data as MindustryData } from '@/lib/types'
+import { queryUser } from '@/lib/api/query'
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,8 +13,8 @@ export default async function handler(
 
     const { q } = req.query
 
-    
+    const queryResult = queryUser(q as string, json)
 
-    res.status(200).json(result)
+    res.status(200).json((await queryResult).result)
     res.end()
 }

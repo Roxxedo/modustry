@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Mod({ data, readme }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
-            <Head />
+            <Head title={data.name + ' - Modustry'} description={''} />
             <main className='modsmain text-white'>
                 <div className="container">
                     <Navbar />

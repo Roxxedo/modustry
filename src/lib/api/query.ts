@@ -24,7 +24,7 @@ export function query(query: String, data: Data[]) {
     return result
 }
 
-export async function queryUser(query: String, data: Data[]) {
+export async function queryUser(query: string, data: Data[]) {
     var result: UserData[] = []
     var resultmap: string[] = []
     for (var i in data) {

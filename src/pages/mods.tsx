@@ -21,22 +21,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 export default function Mods({ data, pageIndex, limit, versions }: InferGetServerSidePropsType<typeof getServerSideProps>) {  
     const [index, setIndex] = useState(1)
     const [query, setQuery] = useState('')
-    const [version, setVersion] = useState("Select...")
-    const [perPage, setPerPage] = useState(20)
-    const [pages, setPages] = useState<Data[][]>(sliceIntoChunks(data, perPage))
+    const [pages, setPages] = useState<Data[][]>(sliceIntoChunks(data, 20))
     const [results, setResults] = useState<Data[]>(pages[(index - 1)])
-
-    /* PAGINATION */
-    const setPage = useCallback((page: number) => {
-        setIndex(page);
-    }, [])
 
     /* SEARCH BAR */
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const query = event.target.value
         setQuery(query)
         if(query.length) setResults(querySearch(query, data))
-        else setResults(pages[(index -1)])
+        else setResults(results)
     }, [])
 
     const onFocus = useCallback(() => {
@@ -79,7 +72,7 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
                 pagination[3].content = index - 1
                 pagination[2].content = index - 2
                 pagination[1].content = index - 3
-            } 
+            }
         }
     }
 
@@ -92,9 +85,11 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
 
     useEffect(() => {
         require("bootstrap/dist/js/bootstrap.bundle.min.js");
-        setPages(sliceIntoChunks(data, perPage))
+    }, [])
+
+    useEffect(() => {
         setResults(pages[(index - 1)])
-    }, []);
+    }, [index]);
 
     pagination.update(index)
 
@@ -118,7 +113,7 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
                                     onBlur={onBlur} 
                                 />
                             </div>
-                            {pages[(index - 1)].map((value: Data, _index: number, _array: Data[]) => (
+                            {results.map((value: Data, _index: number, _array: Data[]) => (
                                 <>
                                     <ListElement value={value} key={value.repo} />
                                 </>
@@ -126,15 +121,15 @@ export default function Mods({ data, pageIndex, limit, versions }: InferGetServe
                         </div>
                         <nav className='my-4'>
                             <div className='d-flex justify-content-center'>
-                                <button type='button' className='btn mx-2 c-3f4549' onClick={() => { setPage((index - 1)) }} disabled={index == 1}><b>{"<-"}</b></button> 
+                                <button type='button' className='btn mx-2 c-3f4549' onClick={() => { setIndex((index - 1)) }} disabled={index == 1}><b>{"<-"}</b></button> 
 
-                                {hasPage(pagination[1].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[1].color} onClick={() => {setPage(pagination[1].content)}}>{pagination[1].content}</a>)}
-                                {hasPage(pagination[2].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[2].color} onClick={() => {setPage(pagination[2].content)}}>{pagination[2].content}</a>)}
-                                {hasPage(pagination[3].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[3].color} onClick={() => {setPage(pagination[3].content)}}>{pagination[3].content}</a>)}
-                                {hasPage(pagination[4].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[4].color} onClick={() => {setPage(pagination[4].content)}}>{pagination[4].content}</a>)}
-                                {hasPage(pagination[5].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[5].color} onClick={() => {setPage(pagination[5].content)}}>{pagination[5].content}</a>)}
+                                {hasPage(pagination[1].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[1].color} onClick={() => {setIndex(pagination[1].content)}}>{pagination[1].content}</a>)}
+                                {hasPage(pagination[2].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[2].color} onClick={() => {setIndex(pagination[2].content)}}>{pagination[2].content}</a>)}
+                                {hasPage(pagination[3].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[3].color} onClick={() => {setIndex(pagination[3].content)}}>{pagination[3].content}</a>)}
+                                {hasPage(pagination[4].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[4].color} onClick={() => {setIndex(pagination[4].content)}}>{pagination[4].content}</a>)}
+                                {hasPage(pagination[5].content) && (<a className={'btn rounded-circle mx-1 c-' + pagination[5].color} onClick={() => {setIndex(pagination[5].content)}}>{pagination[5].content}</a>)}
                                 
-                                <button type='button' className='btn mx-2 c-3f4549' onClick={() => { setPage((index + 1)) }} disabled={index == pages.length}><b>{"->"}</b></button>
+                                <button type='button' className='btn mx-2 c-3f4549' onClick={() => { setIndex((index + 1)) }} disabled={index == pages.length}><b>{"->"}</b></button>
                             </div>
                         </nav>
                     </section>

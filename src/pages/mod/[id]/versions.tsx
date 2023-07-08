@@ -1,6 +1,6 @@
 import Head from '@/components/Head'
 import { getProps } from '@/lib/mod/versions'
-import { Data, Github, GithubAssets } from '@/lib/types'
+import { Data, GithubRelease, GithubReleaseAssets } from '@/lib/types'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import styles from '@/styles/Home.module.css'
 import ListElement from '@/components/mod/VersionsListElement'
@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Versions({ gjson, data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
-            <Head />
+            <Head title={data.name + ' - Modustry'} description={''} />
             <main className='modsmain text-white'>
                 <div className="container">
                     <Navbar />
@@ -24,7 +24,7 @@ export default function Versions({ gjson, data }: InferGetServerSidePropsType<ty
                         <ModInfo value={data} />
                         <ModNavbar value={data} />
                         <div className="list-group list-group-flush scrollarea">
-                                {gjson.map((value: Github, _index: number, _array: Github[]) => (
+                                {gjson.map((value: GithubRelease, _index: number, _array: GithubRelease[]) => (
                                     <>
                                         <ListElement value={value} />
                                     </>

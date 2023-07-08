@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 export default function About({ readme }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
-            <Head />
+            <Head title='About - Modustry' description='' />
             <main className='main text-white'>
                 <div className="container">
                     <Navbar />

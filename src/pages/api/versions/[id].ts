@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { ReleaseData, ReleaseAssetData } from '@/lib/api/types'
+import { ReleaseData, ReleaseAssetData } from '@/lib/types'
 
 export default async function handler(
   req: NextApiRequest,

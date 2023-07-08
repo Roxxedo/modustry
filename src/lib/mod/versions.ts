@@ -1,4 +1,4 @@
-import { Data, Github } from '@/lib/types'
+import { Data, GithubRelease } from '@/lib/types'
 import { GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { remark } from 'remark'
@@ -13,7 +13,7 @@ export const getProps = async (ctx: GetServerSidePropsContext) => {
     const data: Data = await res.json()
 
     const gres = await fetch(`https://api.github.com/repos/${data.repo}/releases`)
-    var gjson: Github[] = await gres.json();
+    var gjson: GithubRelease[] = await gres.json();
 
     gjson.map(async (value, index, number) => {
         const processedContent = await remark()

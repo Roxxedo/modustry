@@ -1,7 +1,7 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
-import getProps from '@/lib/default'
+import { getProps } from '@/lib/mod/changelog'
 
-import CustomHead from "@/components/Head"
+import Head from "@/components/Head"
 import Navbar from '@/components/Navbar'
 import ModInfo from "@/components/mod/ModInfo"
 import ModNavbar from "@/components/navbars/ModNavbar"
@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Changelog({ gjson, data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
-            <CustomHead title='' description='' />
+            <Head title={data.name + ' - Modustry'} description='' />
             <main className='modsmain text-white'>
                 <div className="container">
                     <Navbar />

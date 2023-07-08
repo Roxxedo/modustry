@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { GithubData, UserData } from '@/lib/api/types'
+import { GithubData, UserData } from '@/lib/types'
 import { Data as MindustryData } from '@/lib/types'
 
 export default async function handler(
