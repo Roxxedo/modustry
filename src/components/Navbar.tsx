@@ -22,7 +22,7 @@ export default function Navbar() {
                         <Link href={value[1].path} className={"nav-link " + toActive(value[1].active)}>{value[1].name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link href={value[2].path} className={"nav-link disabled text-muted" + toActive(value[2].active)}>{value[2].name}</Link>
+                        <Link href={value[2].path} className={"nav-link disabled text-white" + toActive(value[2].active)}>{value[2].name}</Link>
                     </li>
                     <li className="nav-item">
                         <Link href={value[3].path} className={"nav-link " + toActive(value[3].active)}>{value[3].name}</Link>
