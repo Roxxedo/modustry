@@ -69,3 +69,7 @@ html, body {
     max-height: 280px;
     overflow-y: auto;
 }
+
+.text-muted {
+    color: #6c757d !important;
+}
