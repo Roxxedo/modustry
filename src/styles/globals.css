@@ -350,3 +350,7 @@ select {
     border-radius: calc(var(--default-rounded) / 2.5);
     padding: calc(var(--default-padding) / 4)
 }
+
+.dmodsb {
+    background: var(--color-001-hex) !important;
+}
