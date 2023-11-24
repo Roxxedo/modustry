@@ -1,6 +1,5 @@
 import { useRouter } from "next/router"
 import Link from 'next/link'
-import { GenericInputPropsNavbar } from "@/lib/types"
 
 export default function Navbar() {
     const router = useRouter()
@@ -8,26 +7,29 @@ export default function Navbar() {
     const toActive = (status: boolean) => { if (status) return "active"; else return "" }
     const isOnRote = (path: string) => { if (router.asPath == path) return true; else return false }
 
-    var value = { 
-        1: { path: "/mods",     name: "Mods",     active: isOnRote("/mods") }, 
-        2: { path: "/modpacks", name: "Modpacks", active: isOnRote("/modpacks") }, 
-        3: { path: "/textures", name: "Textures", active: isOnRote("/textures") }
-    }
+    var value = [
+        { path: "/mods", name: "Mods" },
+        { path: "/modpacks", name: "Modpacks" },
+        { path: "/textures", name: "Textures" }
+    ]
+
+    const isActive = (path: string) => { if (router.asPath == path) return "active"; else return "" }
 
     return (
         <>
-            <header className="d-flex justify-content-center py-3 newcolor">
-                <ul className="nav nav-pills">
-                    <li className="nav-item">
-                        <Link href={value[1].path} className={"nav-link " + toActive(value[1].active)}>{value[1].name}</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link href={value[2].path} className={"nav-link disabled text-white" + toActive(value[2].active)}>{value[2].name}</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link href={value[3].path} className={"nav-link " + toActive(value[3].active)}>{value[3].name}</Link>
-                    </li>
+            <header className="navbar">
+                {/* <img width={100} height={48} src={"/modustry.jpg"} /> */}
+                <div><a href="/">Modustry</a></div>
+                <ul>
+                    {value.map((value, index, array) => (
+                        <>
+                            <li>
+                                <Link href={value.path} className={isActive(value.path)}>{value.name}</Link>
+                            </li>
+                        </>
+                    ))}
                 </ul>
+                <button>Sign In</button>
             </header>
         </>
     )

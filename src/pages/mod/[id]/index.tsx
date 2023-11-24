@@ -1,6 +1,6 @@
 import Head from '@/components/Head'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { getProps } from '@/lib/mod'
+import { getProps } from '@/lib/mod/mod'
 import ModNavbar from '@/components/navbars/ModNavbar'
 import ModInfo from '@/components/mod/ModInfo'
 import Markdown from '@/components/Markdown'
@@ -11,19 +11,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props }
 }
 
-export default function Mod({ data, readme }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Mod({ data, readme, allDownloadsCount, updatedDate, publishedDate }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
             <Head title={data.name + ' - Modustry'} description={''} />
-            <main className='modsmain text-white'>
-                <div className="container">
-                    <Navbar />
-                    <section>
-                        <ModInfo value={data} />
-                        <ModNavbar value={data}/>
+            <main className='container modpage'>
+                <Navbar />
+                <section>
+                    <ModInfo value={data} allDownloadsCount={allDownloadsCount} updatedDate={updatedDate} publishedDate={publishedDate} />
+                    <ModNavbar />
+                    <div className='d-flex markdown'>
                         <Markdown value={readme} />
-                    </section>
-                </div>
+                    </div>
+                </section>
             </main>
         </>
     )

@@ -1,3 +1,5 @@
+import { requestText } from "./mod/utils"
+
 export type Data = {
     repo: string,
     name: string,
@@ -14,7 +16,9 @@ export type GithubRelease = {
     name: string,
     tag_name: string,
     body: string,
-    assets: GithubReleaseAssets[]
+    assets: GithubReleaseAssets[],
+    target_commitish: string,
+    published_at: string
 }
 
 export type GithubReleaseAssets = {
@@ -52,6 +56,13 @@ export type ReleaseAssetData = {
     browser_download_url: string
 }
 
+export type SearchType = {
+    query: string,
+    loader: string,
+    category: string,
+    version: string
+}
+
 /* Props Data */
 
 export type GenericHeadPropsData = {
@@ -69,8 +80,4 @@ export type GenericInputPropsGithub = {
 
 export type GenericInputPropsString = {
     value: string
-}
-
-export type GenericInputPropsNavbar = {
-    value: { 1: { path: string, name: string, active: boolean }, 2: { path: string, name: string, active: boolean }, 3: { path: string, name: string, active: boolean }}
 }

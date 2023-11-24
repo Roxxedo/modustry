@@ -3,7 +3,7 @@ import { getProps } from '@/lib/mod/versions'
 import { Data, GithubRelease, GithubReleaseAssets } from '@/lib/types'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import styles from '@/styles/Home.module.css'
-import ListElement from '@/components/mod/VersionsListElement'
+import ListElement from '@/components/lists/VersionsListElement'
 import ModNavbar from '@/components/navbars/ModNavbar'
 import ModInfo from '@/components/mod/ModInfo'
 import Navbar from '@/components/Navbar'
@@ -21,14 +21,14 @@ export default function Versions({ gjson, data }: InferGetServerSidePropsType<ty
                 <div className="container">
                     <Navbar />
                     <section>
-                        <ModInfo value={data} />
-                        <ModNavbar value={data} />
-                        <div className="list-group list-group-flush scrollarea">
-                                {gjson.map((value: GithubRelease, _index: number, _array: GithubRelease[]) => (
-                                    <>
-                                        <ListElement value={value} />
-                                    </>
-                                ))}
+                        <ModInfo value={data} allDownloadsCount={0} updatedDate={''} publishedDate={''} />
+                        <ModNavbar />
+                        <div className="list-group list-group-flush scrollarea modversions">
+                            {gjson.map((value: GithubRelease, _index: number, _array: GithubRelease[]) => (
+                                <>
+                                    <ListElement value={value} />
+                                </>
+                            ))}
                         </div>
                     </section>
                 </div>

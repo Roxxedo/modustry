@@ -1,15 +1,13 @@
 import Head from '@/components/Head'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
 export default function Home() {
-
     return (
         <>
             <Head title='Modustry' description='' />
             <main className='main text-white shadow'>
-                <Navbar />
                 <div className="container">
+                    <Navbar />
                     <section className='text-center'>
                         <h1>The place for Mindustry <br/> Mods</h1>
                         <h2 className='center mb-4'> Discover, play, and share Mindustry content through our open-
@@ -18,7 +16,6 @@ export default function Home() {
                     </section>
                 </div>
             </main>
-            <Footer />
         </>
     )
 }

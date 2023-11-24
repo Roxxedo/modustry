@@ -1,23 +1,84 @@
 import { GetServerSidePropsContext } from "next";
-import { Data } from "@/lib/types";
-import { sliceIntoChunks } from "@/lib/utils";
+import { request } from "./mod/utils";
+import { Dispatch, SetStateAction, useState } from "react";
+import { sliceIntoChunks } from "./utils";
+import { Data, SearchType } from "./types";
+import { isEmpty, query } from "./api/query";
 
 const API_URL = process.env.API_URL
 
-export default async function getProps(ctx: GetServerSidePropsContext) {
-    const { q, page, perPage } = ctx.query
+export async function getProps(ctx: GetServerSidePropsContext) {
+    const data = await request(`${API_URL}/api/mods`)
 
-    let query: string = "";
-    if (q != undefined) query = q as string
+    return { data }
+}
 
-    let limit: number = 20
-    if (perPage != undefined) limit = perPage as unknown as number
+export default class DefaultPage {
+    private default: Data[]
 
-    let pageIndex: number = 1
-    if (page != undefined) pageIndex = page as unknown as number
+    private data: Data[];
+    private setData: Function;
 
-    const res = await fetch(`${API_URL}/api/query?q=${query}`)
-    const data: Data[] = await res.json()
+    public index: number;
+    public perPage: number;
+    public pages: Data[][];
+    public results: Data[];
 
-    return { data, pageIndex, limit }
+    public setIndex: Function;
+    public setPerPage: Function;
+    public setPages: Function;
+    public setResults: Function;
+
+    public query: string;
+    public loader: string;
+    public category: string;
+    public version: string;
+
+    public setQuery: Function;
+    public setLoader: Function;
+    public setCategory: Function;
+    public setVersion: Function;
+
+    constructor(value: Data[]) {
+        const [data, setData] = useState<Data[]>(value)
+
+        this.default = data
+        this.data = data
+        this.setData = setData
+
+        const [index, setIndex] = useState(1)
+        const [perPage, setPerPage] = useState(20)
+        const [pages, setPages] = useState<Data[][]>(sliceIntoChunks(this.data, perPage))
+        const [results, setResults] = useState<Data[]>(pages[(index - 1)])
+
+        const [query, setQuery] = useState<string>("")
+        const [loader, setLoader] = useState<string>("")
+        const [category, setCategory] = useState<string>("")
+        const [version, setVersion] = useState<string>("")
+
+        this.index = index
+        this.perPage = perPage
+        this.pages = pages
+        this.results = results
+
+        this.setIndex = setIndex
+        this.setPerPage = setPerPage
+        this.setPages = setPages
+        this.setResults = setResults
+
+        this.query = query
+        this.loader = loader
+        this.category = category
+        this.version = version
+
+        this.setQuery = setQuery
+        this.setLoader = setLoader
+        this.setCategory = setCategory
+        this.setVersion = setVersion
+    }
+
+    update() {
+        this.setPages(sliceIntoChunks(this.data, this.perPage))
+        this.setResults(this.pages[(this.index - 1)])
+    }
 }

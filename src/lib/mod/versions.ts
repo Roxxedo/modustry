@@ -22,7 +22,7 @@ export const getProps = async (ctx: GetServerSidePropsContext) => {
         value.body = processedContent.toString().replaceAll('h2', 'h4')
     })
 
-    if (gjson.length == 0) gjson = [{ name: "Latest", tag_name: "source", body: "Just to download the zip, not jar mod.", assets: [{ name: "Source Code", download_count: "Not Measured", browser_download_url: `https://codeload.github.com/${data.repo}/zip/refs/heads/master` }, { name: "Source Code - Alternative", download_count: "Not Measured", browser_download_url: `https://codeload.github.com/${data.repo}/zip/refs/heads/main` }] }]
+    if (gjson.length == 0) gjson = [{ name: "Latest", tag_name: "source", body: "Just to download the zip, not jar mod.", assets: [{ name: "Source Code", download_count: "Not Measured", browser_download_url: `https://codeload.github.com/${data.repo}/zip/refs/heads/master` }, { name: "Source Code - Alternative", download_count: "Not Measured", browser_download_url: `https://codeload.github.com/${data.repo}/zip/refs/heads/main` }], target_commitish: "master", published_at: "undefined" }]
 
     var props = { gjson, data }
     return props

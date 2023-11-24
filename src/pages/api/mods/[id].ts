@@ -1,22 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { Data as MindustryData } from '@/lib/types'
+import { getMod } from '@/lib/api/mods'
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<{}>
+    req: NextApiRequest,
+    res: NextApiResponse<{}>
 ) {
-    const id = req.query.id
-
-    const mods = await fetch('https://raw.githubusercontent.com/Anuken/MindustryMods/master/mods.json')
-    const json: MindustryData[] = await mods.json()
-
-    for (var i in json) {
-        const modid = json[i].repo.split('/')[1]
-        if (modid == id) {
-            res.status(200).json(json[i])
-            res.end()
-        }
-    }
+    const { id } = req.query
+    const response = await getMod(String(id))
+    if (id && response)res.status(200).json(response)
     res.status(404).end()
 }

@@ -1,25 +1,25 @@
 import { UserData, Data } from "@/lib/types";
 
-export function query(query: String, data: Data[]) {
+const search = (value: string, term: string) => { return value.toLowerCase().search(term.toLowerCase()) > -1 }
+export const isEmpty = (value: string) => { if (value !== "") return true; else return false }
+
+export function query(data: Data[], query: string, loader: string, category: string, version: string) {
     var result: Data[] = []
-    for (var i in data) {
-        if (data[i].name.toLocaleLowerCase().search(query.toLowerCase() as string) > -1) {
-            if (!result.includes(data[i])) {
-                result.push(data[i])
-            }
+    for (var item of data) {
+        if (isEmpty(query)) {
+            if (search(item.name, query) && !result.includes(item)) result.push(item)
+            if (search(item.author, query) && !result.includes(item)) result.push(item)
+            if (search(item.repo, query) && !result.includes(item)) result.push(item)
         }
 
-        if (data[i].author.toLocaleLowerCase().search(query.toLowerCase() as string) > -1) {
-            if (!result.includes(data[i])) {
-                result.push(data[i])
-            }
+        if (isEmpty(loader)) {
+            if (loader == 'script' && item.hasScripts && !result.includes(item)) result.push(item)
+            if (loader == 'java' && item.hasJava && !result.includes(item)) result.push(item)
         }
-
-        if (data[i].repo.toLocaleLowerCase().search(query.toLowerCase() as string) > -1) {
-            if (!result.includes(data[i])) {
-                result.push(data[i])
-            }
-        }
+        
+        if (isEmpty(category)) if (search(item.description, category) && !result.includes(item)) result.push(item)
+        
+        if (isEmpty(version)) if (item.minGameVersion == version && !result.includes(item)) result.push(item)
     }
     return result
 }
@@ -32,8 +32,8 @@ export async function queryUser(query: string, data: Data[]) {
             const user = data[i].repo.split('/')[0]
             if (!resultmap.includes(user)) {
                 const url = await fetch(`${process.env.API_URL}/api/users/${user}`)
-                const json2 = await url.json() 
-                if (!result.includes(json2)) if(json2.error != 404) result.push(json2); resultmap.push(json2.username)
+                const json2 = await url.json()
+                if (!result.includes(json2)) if (json2.error != 404) result.push(json2); resultmap.push(json2.username)
             }
         }
     }
