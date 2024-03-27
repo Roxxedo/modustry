@@ -29,7 +29,7 @@ export default function Footer() {
                         <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-white disabled">Blog</a></li>
                         <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-white disabled">Docs</a></li>
                         <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-white disabled">Status</a></li>
-                        <li className="nav-item mb-2"><a href="https://github.com/Roxxedo/modustry" className="nav-link p-0 text-white">Github</a></li>
+                        <li className="nav-item mb-2"><a href="https://github.com/roxcom-br/modustry" className="nav-link p-0 text-white">Github</a></li>
                       </ul>
                     </div>
 
