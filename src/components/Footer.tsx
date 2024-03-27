@@ -5,7 +5,8 @@ export default function Footer() {
                 <div className="container">
                   <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 text-white">
                     <div className="col mb-3">
-                      <p className="text-white">Modustry © 2023</p>
+                      <p className="text-white">Modustry © 2023 - 2024</p>
+                      <small>BETA v0.1.0</small>
                     </div>
 
                     <div className="col mb-3">
