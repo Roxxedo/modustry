@@ -18,7 +18,6 @@ export default function ListElement({ value }: GenericServerPropsData) {
                                 </>
                             ))}
                         </div>
-                        <p className="mb-1 small" style={{ overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, lineClamp: 2, WebkitBoxOrient: "vertical" }}>{value.description}</p>
                     </div>
                 </div>
             </Link>
