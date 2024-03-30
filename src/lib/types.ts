@@ -1,5 +1,3 @@
-import { requestText } from "./mod/utils"
-
 export type Data = {
     repo: string,
     name: string,

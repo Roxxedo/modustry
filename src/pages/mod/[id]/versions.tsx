@@ -7,7 +7,7 @@ import ListElement from '@/components/lists/VersionsListElement'
 import ModNavbar from '@/components/navbars/ModNavbar'
 import ModInfo from '@/components/mod/ModInfo'
 import Navbar from '@/components/Navbar'
-import { getAllDownloads, getPublishedDate, getUpdatedDate } from "@/lib/mod/utils"
+import { getAllDownloads, getPublishedDate, getUpdatedDate } from "@/lib/utils"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const props = getProps(context)

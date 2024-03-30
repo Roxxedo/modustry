@@ -18,8 +18,8 @@ export default function Footer() {
                       <ul className="nav flex-column">
                         <li className="nav-item mb-2"><a href={process.env.API_URL + ""} className="nav-link p-0 text-white">Home</a></li>
                         <li className="nav-item mb-2"><a href={process.env.API_URL + "/mods"} className="nav-link p-0 text-white">Mods</a></li>
-                        <li className="nav-item mb-2"><a href={process.env.API_URL + "/modpacks"} className="nav-link p-0 text-white">Modpacks</a></li>
                         <li className="nav-item mb-2"><a href={process.env.API_URL + "/textures"} className="nav-link p-0 text-white">Textures</a></li>
+                        <li className="nav-item mb-2"><a href={process.env.API_URL + "/servers"} className="nav-link p-0 text-white">Servers</a></li>
                       </ul>
                     </div>
 
