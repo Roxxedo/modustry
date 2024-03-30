@@ -235,6 +235,10 @@ header.navbar div a:hover {
     margin-right: var(--default-padding);
 }
 
+.serverinfo {
+    max-width: 520px !important;
+}
+
 .modinfo span {
     display: block;
 }

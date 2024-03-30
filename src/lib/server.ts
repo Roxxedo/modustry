@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { request } from "./mod/utils";
+import { request } from "./utils";
 import { ServerType } from "./types";
 import { useState } from "react";
 

@@ -1,7 +1,6 @@
 import { GetServerSidePropsContext } from "next";
-import { request } from "./mod/utils";
 import { useState } from "react";
-import { sliceIntoChunks } from "./utils";
+import { sliceIntoChunks, request } from "./utils";
 
 const API_URL = process.env.API_URL
 

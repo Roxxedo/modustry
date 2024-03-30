@@ -2,7 +2,7 @@ import { Data, GithubRelease } from '@/lib/types'
 import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
-import { getAllDownloads, getPublishedDate, getUpdatedDate, request, requestText, toHtml } from './utils';
+import { getAllDownloads, getPublishedDate, getUpdatedDate, request, requestText, toHtml } from '../utils';
 
 interface IParams extends ParsedUrlQuery {
     id: string

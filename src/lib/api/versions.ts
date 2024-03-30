@@ -1,5 +1,5 @@
 import { ReleaseData } from "@/lib/types"
-import { request } from "../mod/utils"
+import { request } from "../utils"
 
 export async function getVersionList() {
     const db = await fetch(`https://api.github.com/repos/Anuken/Mindustry/releases?per_page=100`)
