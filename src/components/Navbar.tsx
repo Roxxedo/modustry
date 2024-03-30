@@ -9,8 +9,9 @@ export default function Navbar() {
 
     var value = [
         { path: "/mods", name: "Mods" },
-        { path: "/modpacks", name: "Modpacks" },
-        { path: "/textures", name: "Textures" }
+//      { path: "/modpacks", name: "Modpacks" },
+        { path: "/textures", name: "Textures" },
+        { path: "/servers", name: "Servers" }
     ]
 
     const isActive = (path: string) => { if (router.asPath == path) return "active"; else return "" }

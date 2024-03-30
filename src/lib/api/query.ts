@@ -1,4 +1,4 @@
-import { UserData, Data } from "@/lib/types";
+import { UserData, Data, ServerType } from "@/lib/types";
 
 const search = (value: string, term: string) => { return value.toLowerCase().search(term.toLowerCase()) > -1 }
 export const isEmpty = (value: string) => { if (value !== "") return true; else return false }
@@ -20,6 +20,16 @@ export function query(data: Data[], query: string, loader: string, category: str
         if (isEmpty(category)) if (search(item.description, category) && !result.includes(item)) result.push(item)
         
         if (isEmpty(version)) if (item.minGameVersion == version && !result.includes(item)) result.push(item)
+    }
+    return result
+}
+
+export function queryServer(data: ServerType[], query: string) {
+    var result: ServerType[] = []
+    for (var item of data) {
+        if (isEmpty(query)) {
+            if (search(item.name, query) && !result.includes(item)) result.push(item)
+        }
     }
     return result
 }
