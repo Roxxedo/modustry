@@ -1,5 +1,3 @@
-import { requestText } from "./mod/utils"
-
 export type Data = {
     repo: string,
     name: string,
@@ -63,6 +61,11 @@ export type SearchType = {
     version: string
 }
 
+export type ServerType = {
+    name: string,
+    address: string[]
+}
+
 /* Props Data */
 
 export type GenericHeadPropsData = {
@@ -80,4 +83,8 @@ export type GenericInputPropsGithub = {
 
 export type GenericInputPropsString = {
     value: string
+}
+
+export type GenericServerPropsData = {
+    value: ServerType
 }

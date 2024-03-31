@@ -1,9 +1,6 @@
 import { GetServerSidePropsContext } from "next";
-import { request } from "./mod/utils";
-import { Dispatch, SetStateAction, useState } from "react";
-import { sliceIntoChunks } from "./utils";
-import { Data, SearchType } from "./types";
-import { isEmpty, query } from "./api/query";
+import { useState } from "react";
+import { sliceIntoChunks, request } from "./utils";
 
 const API_URL = process.env.API_URL
 
@@ -13,16 +10,16 @@ export async function getProps(ctx: GetServerSidePropsContext) {
     return { data }
 }
 
-export default class DefaultPage {
-    private default: Data[]
+export default class DefaultPage<T> {
+    private default: T[]
 
-    private data: Data[];
+    private data: T[];
     private setData: Function;
 
     public index: number;
     public perPage: number;
-    public pages: Data[][];
-    public results: Data[];
+    public pages: T[][];
+    public results: T[];
 
     public setIndex: Function;
     public setPerPage: Function;
@@ -39,8 +36,8 @@ export default class DefaultPage {
     public setCategory: Function;
     public setVersion: Function;
 
-    constructor(value: Data[]) {
-        const [data, setData] = useState<Data[]>(value)
+    constructor(value: T[]) {
+        const [data, setData] = useState<T[]>(value)
 
         this.default = data
         this.data = data
@@ -48,8 +45,8 @@ export default class DefaultPage {
 
         const [index, setIndex] = useState(1)
         const [perPage, setPerPage] = useState(20)
-        const [pages, setPages] = useState<Data[][]>(sliceIntoChunks(this.data, perPage))
-        const [results, setResults] = useState<Data[]>(pages[(index - 1)])
+        const [pages, setPages] = useState<T[][]>(sliceIntoChunks(this.data, perPage))
+        const [results, setResults] = useState<T[]>(pages[(index - 1)])
 
         const [query, setQuery] = useState<string>("")
         const [loader, setLoader] = useState<string>("")

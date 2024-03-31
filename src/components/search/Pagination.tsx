@@ -1,11 +1,11 @@
 import DefaultPage from "@/lib/default";
 import { Data } from "@/lib/types"
 
-export type PaginationInput = {
-    manager: DefaultPage
+export type PaginationInput<T> = {
+    manager: DefaultPage<T>
 }
 
-export default function Pagination({ manager }: PaginationInput) {
+export default function Pagination<T>({ manager }: PaginationInput<T>) {
     const isActive = (indexx: number) => { if (manager.index == indexx) return 'active'; else return '' }
     const isHided  = (indexx: number) => { const calc = indexx - manager.index + (manager.index + (manager.index - 2)); if (calc > manager.pages.length) return 'hide'; else return '' }
 

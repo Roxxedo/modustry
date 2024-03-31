@@ -1,4 +1,4 @@
-import { request } from "../mod/utils";
+import { request } from "../utils";
 import { Data } from "../types";
 
 export async function getMod(id: string) {

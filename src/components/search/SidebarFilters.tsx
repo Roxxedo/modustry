@@ -3,12 +3,12 @@ import { Data } from "@/lib/types"
 import { ChangeEvent, MouseEvent as ReactMouseEvent, useCallback } from "react"
 import { query as libQuery } from "@/lib/api/query"
 
-export type SidebarFiltersType = {
+export type SidebarFiltersType<T> = {
     data: Data[],
-    manager: DefaultPage
+    manager: DefaultPage<T>
 }
 
-export default function SidebarFilters({ data, manager }: SidebarFiltersType) {
+export default function SidebarFilters<T>({ data, manager }: SidebarFiltersType<T>) {
     const clearFilters = () => {
         $<HTMLInputElement>('.sidebar-filters input[type=checkbox]').each((index, element) => {
             if(element.checked) element.click()

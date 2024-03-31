@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { Data } from '@/lib/types'
 import { queryUser } from '@/lib/api/query'
-import { request } from '@/lib/mod/utils'
+import { request } from '@/lib/utils'
 
 export default async function handler(
     req: NextApiRequest,
