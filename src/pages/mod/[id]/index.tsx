@@ -15,9 +15,9 @@ export default function Mod({ data, readme, allDownloadsCount, updatedDate, publ
     return (
         <>
             <Head title={data.name + ' - Modustry'} description={''} />
-            <main className='container modpage'>
+            <main className='shadow'>
                 <Navbar />
-                <section>
+                <section className='container p-0 pb-4'>
                     <ModInfo value={data} allDownloadsCount={allDownloadsCount} updatedDate={updatedDate} publishedDate={publishedDate} />
                     <ModNavbar />
                     <div className='d-flex markdown'>

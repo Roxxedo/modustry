@@ -25,10 +25,10 @@ export default function Servers({ data }: InferGetServerSidePropsType<typeof get
     return (
         <>
             <CustomHead title='Search Servers - Modustry' description='' />
-            <main className="container">
+            <main className="shadow">
                 <Navbar />
-                <section>
-                    <div className="list-group list-group-flush scrollarea">
+                <section className="container p-0">
+                    <div className="mods-list list-group list-group-flush scrollarea">
                         <ServerSearchBar data={data} manager={manager} />
                         {manager.results && manager.results.map((value: ServerType, index: number, _array: ServerType[]) => (
                             <>

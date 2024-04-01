@@ -34,7 +34,7 @@ export default function ModInfo({ value, allDownloadsCount, updatedDate, publish
 
     return (
         <>
-            <div className="modinfo">
+            <div className="mod-info">
                 <Img src={[("https://raw.githubusercontent.com/" + value.repo + "/master/icon.png"), ("https://raw.githubusercontent.com/" + value.repo + "/master/assets/icon.png"), "https://raw.githubusercontent.com/Anuken/MindustryJavaModTemplate/master/assets/sprites/frog.png"]} alt="Mod Icon" width="128" height="128" />
                 <h2>{value.name}</h2>
                 <div>
@@ -46,17 +46,17 @@ export default function ModInfo({ value, allDownloadsCount, updatedDate, publish
                     </div>
                 </div>
                 <hr />
-                <div>
+                <div className="d-flex flex-column">
                     <span><i className="fa-solid fa-download " /><a className="bold">{convert()}</a> Downloads </span>
                     <span><i className="fa-solid fa-star " /><a className="bold">{value.stars}</a> Stars </span>
-                    <div className="dates">
+                    <div className="d-flex flex-column dates">
                         <span><i className="fa-solid fa-calendar " />Created <a className="bold">{getDate(publishedDate)}</a></span>
                         <span><i className="fa-solid fa-rotate " />Updated <a className="bold">{getDate(updatedDate)}</a></span>
                     </div>
-                    {/* <div className="buttons">
-                        <a className="btn"><i className="fa-solid fa-flag " />Report</a>
-                        <a className="btn"><i className="fa-solid fa-star " />Star</a>
-                    </div> */}
+                    <div className="buttons">
+                        <a href={`https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2F${value.repo}&report=${value.repo.split('/')[0]}+%28user%29`} className="btn btn-primary"><i className="fa-solid fa-flag " />Report</a>
+                        <a href={"https://github.com/" + value.repo} className="btn btn-primary"><i className="fa-solid fa-star " />Star</a>
+                    </div>
                 </div>
                 <hr />
                 <div className="authors" >

@@ -1,139 +1,110 @@
 :root {
-    /* Color Palette */
-    --color-001-hex: #e5b276;
-    --color-002-hex: #e5b276;
-    --color-003-hex: #e5b276;
-    --color-004-hex: #e5b276;
-    --color-005-hex: #e5b276;
+    /* COLOR SCHEME */
+    --scheme-color-light: #e5e7eb;
+    --scheme-color-dark: #16181c;
 
-    /* Background Palette */
-    --background-001-hex: #16181c;
-    --background-002-hex: #26292f;
-    --background-003-hex: #393e49;
-    --background-004-hex: #999;
-    --background-005-hex: #CCC;
+    --scheme-color-white: #fff;
+    --scheme-color-black: #000;
+    --scheme-color-gray: #2c2c2c;
 
-    /* Default Values */
+    --scheme-color-001: #e5b276;
+    --scheme-color-002: ;
+    --scheme-color-003: ;
+    --scheme-color-004: ;
+    --scheme-color-005: ;
+
+    --scheme-color-dark-secondary: #26292f;
+    --scheme-color-light-secondary: #fff;
+
+    --scheme-color-disabled: #404040;
+
+    /* SIZING SCHEME */
     --default-rounded: 16px;
     --default-padding: 12px;
+
+    /* PROPERTIES */
+    --background: var(--scheme-color-light);
+    --color: var(--scheme-color-black);
+
+    --scheme-color-secondary: var(--scheme-color-light-secondary)
 }
 
-html,
-body {
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: var(--scheme-color-dark);
+        --color: var(--scheme-color-white);
+
+        --scheme-color-secondary: var(--scheme-color-dark-secondary)
+    }
+}
+
+/* - - - DEFAULT COLORS - - - */
+html, body, main, div#__next {
+    background: var(--background) !important;
+    color: var(--color) !important;
+}
+
+a:not(.disabled) {
+    color: var(--color) !important;
+}
+
+.disabled {
+    color: var(--scheme-color-disabled) !important;
+}
+
+a.active {
+    text-decoration: underline;
+    text-decoration-color: var(--scheme-color-001) !important;
+    text-decoration-thickness: 2.5px;
+}
+
+/* - - - DEFAULT SIZES - - - */
+main:has(.main-text) {
+    height: 100vh;
+}
+
+/* - - - HEADER - - - */
+header {
+    background: var(--scheme-color-secondary);
+    border-radius: var(--default-rounded);
     max-width: 100%;
-    overflow-x: hidden;
-    background: var(--background-001-hex) !important;
+    margin: 0 auto;
+    padding: 0 5vw;
+    font-size: 18px;
 }
 
-.main section {
-    padding: 17.5rem 1rem;
+/* - - - MAIN SCREEN - - - */
+.main-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
 }
 
-.main h1 {
-    text-align: center;
+.main-text h1 {
     font-size: 5.25rem;
-    color: #e5b276
+    color: var(--scheme-color-001);
 }
 
-.main h2 {
-    text-align: center;
-    margin: 0;
-    padding: 0;
+.main-text a {
+    background: var(--scheme-color-001);
 }
 
-.main h3 {
-    font-size: 4rem;
-    text-align: center;
-}
-
-.list-group-item {
-    padding: 10px !important;
-}
-
-/* GENERAL */
-
-main {
-    color: white;
-}
-
-.fiximg img,
-img.fiximg {
+/* - - - SIZING FIXES - - - */
+img {
     max-width: 100%;
 }
 
-.bold {
-    font-weight: bold;
-}
-
-i.fa-solid:not(.pagination *), i.fa-brands {
+i.fa-solid:not(.pagination *), i.fa-brands { /* ICON FIXES */
     text-align: center;
     width: 18px;
     margin: 0 2.5px;
 }
 
-/* NAVBAR */
+/* - - - SIDEBAR FILTERS - - - */
 
-header.navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: var(--background-002-hex);
-    margin: 10px 0px;
-    padding: 10px 0px;
-    border-radius: 32px;
-}
-
-header.navbar ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    gap: 14px;
-    margin: 0;
-    padding: 0;
-}
-
-header.navbar ul li a {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-}
-
-header.navbar ul li a.active {
-    text-decoration: underline;
-    text-decoration-color: #e5b276;
-    text-decoration-thickness: 2.5px;
-}
-
-header.navbar button {
-    opacity: 0;
-    /* TEMPORARY HIDED */
-    background: transparent;
-    color: white;
-    border: #fff 1px solid;
-    padding: 5px 10px;
-    border-radius: 16px;
-}
-
-header.navbar div {
-    font-size: 26px;
-    font-weight: bolder;
-}
-
-header.navbar div a {
-    color: white;
-    text-decoration: none;
-    transition: color 320ms ease;
-}
-
-header.navbar div a:hover {
-    color: var(--color-001-hex)
-}
-
-/* SIDEBAR FILTERS */
-
-.sidebar-filters, .sidebar-modpacks {
-    background-color: var(--background-002-hex);
+.sidebar-filters {
+    background-color: var(--scheme-color-secondary);
     float: left;
     padding: calc(var(--default-padding) * 2);
     margin-right: var(--default-padding);
@@ -159,49 +130,19 @@ header.navbar div a:hover {
 }
 
 .sidebar-filters .btn, .sidebar-modpacks .btn {
-    color: white;
+    color: var(--color);
     background: var(--background-003-hex);
     border-radius: var(--default-rounded);
     padding: calc(var(--default-padding) / 4) calc(var(--default-padding) / 2);
     margin-bottom: 5px;
 }
 
-/* SIDEBAR MODPACKS */
-
-.sidebar-modpacks .btn {
-    padding: calc(var(--default-padding) / 2);
-}
-
-/* PAGINATION */
-
-.pagination {
-    display: flex;
-    justify-content: center;
-}
-
-.pagination div {
-    gap: 4px;
-}
-
-.pagination a,
-.pagination button {
-    background: var(--background-002-hex);
-    color: white;
-    border-radius: 50%;
-}
-
-.pagination .hide {
-    display: none;
-}
-
-/* SEARCH BAR */
-
-
+/* - - - SEARCH BAR - - - */
 .search-bar {
     gap: 10px;
     padding: var(--default-padding);
     margin-bottom: 6px;
-    background: var(--background-002-hex);
+    background: var(--scheme-color-secondary) !important;
 }
 
 .search-bar,
@@ -215,8 +156,12 @@ header.navbar div a:hover {
     gap: 5px
 }
 
+.search-bar input {
+    background: var(--scheme-color-secondary);
+}
+
 .search-bar input::placeholder {
-    color: white;
+    color: var(--color);
     opacity: 1;
 }
 
@@ -224,10 +169,9 @@ header.navbar div a:hover {
     white-space: nowrap;
 }
 
-/* MOD PAGE */
-
-.modinfo {
-    background: var(--background-002-hex);
+/* - - - MOD INFORMATION - - - */
+.mod-info {
+    background: var(--scheme-color-secondary);
     float: left;
     padding: calc(var(--default-padding) * 2);
     border-radius: var(--default-rounded);
@@ -239,61 +183,66 @@ header.navbar div a:hover {
     max-width: 520px !important;
 }
 
-.modinfo span {
+.main-border-button span {
     display: block;
 }
 
-.modinfo img {
+.mod-info img {
     border-radius: var(--default-rounded);
 }
 
-.modinfo a {
-    color: white;
+.mod-info a {
+    color: var(--color);
     text-decoration: none;
 }
 
-.modinfo .dates {
+.mod-info .dates {
     margin-top: 8px;
     font-size: 14px;
 }
 
-.modinfo .buttons {
+.mod-info .buttons {
     display: flex;
     margin-top: 12px;
     gap: var(--default-padding);
 }
 
-.modinfo .buttons a {
-    background: var(--color-001-hex);
-    color: white;
+.mod-info .buttons a {
+    border: 0;
+    background: var(--scheme-color-001);
+    color: var(--color);
 }
 
-.modinfo .authors ul {
+.mod-info .authors ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.modinfo .authors li {
+.mod-info .authors li {
     display: flex;
     align-items: center;
 }
 
-.modinfo .authors img {
+.mod-info .authors img {
     margin-right: 8px;
     border-radius: 50%;
 }
 
-.modpage .markdown {
-    background: var(--background-002-hex);
+.list-group-item {
+    padding: 10px !important;
+}
+
+/* MOD INFORMATION - MARKDOWN */
+.markdown {
+    background: var(--scheme-color-secondary);
     padding: calc(var(--default-padding) * 2);
     border-radius: var(--default-rounded);
 }
 
-/* VERSION LIST ITEM */
-
+/* - - - VERSION LIST ITEM - - - */
 .item {
-    background: var(--background-002-hex);
+    background: var(--scheme-color-secondary);
     padding: var(--default-padding);
     border-radius: var(--default-rounded);
     margin-bottom: 12px;
@@ -313,6 +262,10 @@ header.navbar div a:hover {
     text-align: right;
 }
 
+.item li:last-child div a::before {
+    content: 'Download' !important;
+}
+
 .item li h4 {
     font-size: 15px;
     margin-bottom: 5px;
@@ -325,9 +278,9 @@ header.navbar div a:hover {
 
 .main-border-button a {
     font-size: 14px;
-    color: var(--color-001-hex);
+    color: var(--scheme-color-001);
     background-color: transparent;
-    border: 1px solid var(--color-001-hex);
+    border: 1px solid var(--scheme-color-001);
     padding: var(--default-padding) calc(var(--default-padding) * 2);
     display: inline-block;
     border-radius: calc(var(--default-rounded) * 2);
@@ -341,20 +294,129 @@ header.navbar div a:hover {
 }
 
 .main-border-button a:hover {
-    border-color: var(--background-001-hex);
-    background-color: var(--background-001-hex);
-    color: var(--color-001-hex);
+    border-color: var(--scheme-color-001);
+    background-color: var(--scheme-color-001);
+    color: var(--scheme-color-001);
     text-decoration: underline;
+}
+
+/* - - - MODS LIST ITEM - - - */
+.mods-item {
+    background: var(--scheme-color-secondary) !important;
+}
+
+/* - - - PAGINATION - - - */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination div {
+    gap: 4px;
+}
+
+.pagination a,
+.pagination button {
+    background: var(--scheme-color-secondary);
+    color: var(--color);
+    border-radius: 50%;
+}
+
+.pagination .hide {
+    display: none;
+}
+
+.pagination .active {
+    text-decoration: none;
 }
 
 /* SELECT */
 select {
-    background: var(--background-003-hex);
-    color: white;
+    background: var(--scheme-color-secondary);
+    color: var(--color);
     border-radius: calc(var(--default-rounded) / 2.5);
     padding: calc(var(--default-padding) / 4)
 }
 
-.dmodsb {
-    background: var(--color-001-hex) !important;
+/* - - - MOBILE ADAPTATIONS - - - */
+@media (max-width: 480px) {
+    /* HEADER */
+    header {
+        max-width: 100vw;
+        margin: 0 var(--default-padding);
+    }
+
+    header div {
+        display: none;
+    }
+
+    /* MAIN SCREEN */
+    .main-text h1 {
+        font-size: 5rem;
+    }
+
+    /* SIDEBAR FILTERS */
+    .sidebar-filters {
+        float: none;
+        margin: 0 var(--default-padding) !important;
+    }
+
+    .sidebar-filters>div {
+        display: flex;
+    }
+
+    /* MODS LIST */
+    .mods-list {
+        margin: 0 var(--default-padding) !important;
+    }
+
+    /* SEARCH BAR */
+    .search-bar {
+        margin: 6px 0;
+    }
+
+    .search-bar div.spp {
+        display: none !important;
+    }
+
+    /* MOD INFORMATION */
+    .mod-info {
+        float: none;
+        max-width: 100vw;
+        margin: 0 var(--default-padding) !important;
+    }
+
+    /* MOD INFORMATION - MARKDOWN */
+    .markdown {
+        margin: 0 var(--default-padding);
+    }
+
+    .markdown * {
+        max-width: 100%;
+    }
+
+    /* ALL LISTS */
+    .list-group {
+        margin: 0 var(--default-padding);
+    }
+
+    .list-group * {
+        max-width: 100%;
+    }
+
+    /* VERSIONS LIST */
+    .item li {
+        width: auto !important;
+        padding-right: 10px;
+    }
+
+    .item li:last-child {
+        padding-right: 0px;
+    }
+
+    .item li:last-child div a::before {
+        
+        content: '\f0ed' !important;
+    }
 }
