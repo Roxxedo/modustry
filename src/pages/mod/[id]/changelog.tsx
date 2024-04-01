@@ -17,9 +17,9 @@ export default function Changelog({ githubData, data }: InferGetServerSidePropsT
     return (
         <>
             <Head title={data.name + ' - Modustry'} description='' />
-            <main className="container">
+            <main className="shadow">
                 <Navbar />
-                <section>
+                <section className="container p-0 pb-4">
                     <ModInfo 
                         value={data} 
                         allDownloadsCount={getAllDownloads(githubData)} 

@@ -33,7 +33,7 @@ export default function SearchBar<T>({ data, manager }: SearchInput<T>) {
         <>
             <div className="rounded-4 align-items-center search-bar">
                 <input
-                    className='form-control rounded bg-dark text-white w-100'
+                    className='form-control rounded w-100'
                     style={{ width: '70%' }}
                     type='text'
                     placeholder="Search mods..."
@@ -41,16 +41,6 @@ export default function SearchBar<T>({ data, manager }: SearchInput<T>) {
                     onChange={onChange}
                     ref={searchRef}
                 />
-                {/* <div>
-                    <span>Sort by</span>
-                    <select>
-                        <option value={'relevance'}>Relevance</option>
-                        <option value={'downloads'}>Download Count</option>
-                        <option value={'follows'}>Follow Count</option>
-                        <option value={'published'}>Recently Published</option>
-                        <option value={'updated'}>Recently Updated</option>
-                    </select>
-                </div> */}
                 <div>
                     <span>Show per page</span>
                     <select defaultValue={20} onChange={onChangePP}>
@@ -95,7 +85,7 @@ export function ServerSearchBar<T>({ data, manager }: ServerSearchInput<T>) {
         <>
             <div className="rounded-4 align-items-center search-bar">
                 <input
-                    className='form-control rounded bg-dark text-white w-100'
+                    className='form-control rounded w-100'
                     style={{ width: '70%' }}
                     type='text'
                     placeholder="Search mods..."
@@ -103,7 +93,7 @@ export function ServerSearchBar<T>({ data, manager }: ServerSearchInput<T>) {
                     onChange={onChange}
                     ref={searchRef}
                 />
-                <div>
+                <div className="spp">
                     <span>Show per page</span>
                     <select defaultValue={20} onChange={onChangePP}>
                         <option value={5}>5</option>

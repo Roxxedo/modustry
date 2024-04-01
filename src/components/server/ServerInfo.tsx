@@ -8,7 +8,7 @@ export type ServerInfoProps = {
 export default function ServerInfo({ value }: ServerInfoProps) {
     return (
         <>
-            <div className="modinfo serverinfo">
+            <div className="mod-info serverinfo">
                 <Img src={["/modustry.jpg"]} alt="Mod Icon" width="128" height="128" />
                 <h2>{value.name}</h2>
                 <div>

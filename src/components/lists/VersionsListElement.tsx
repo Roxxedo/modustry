@@ -15,7 +15,7 @@ export default function GHListElement({ value }: GenericInputPropsGithub) {
                             <li><h4>Branch</h4><span>{value.target_commitish}</span></li>
                             <li><h4>Published at</h4><span>{getDate(value.published_at)}</span></li>
                             <li><h4>Download Count</h4><span>{value2.download_count}</span></li>
-                            <li><div className="main-border-button border-no-active"><a href={value2.browser_download_url}>Download</a></div></li>
+                            <li><div className="main-border-button border-no-active fa"><a href={value2.browser_download_url}></a></div></li>
                         </div>
                     </div>
                 </>

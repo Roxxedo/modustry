@@ -26,11 +26,11 @@ export default function Mods({ data }: InferGetServerSidePropsType<typeof getSer
     return (
         <>
             <CustomHead title='Search Textures - Modustry' description='' />
-            <main className="container">
+            <main className="shadow">
                 <Navbar />
-                <section>
+                <section className="container p-0">
                     <SidebarFilters data={data2} manager={manager} />
-                    <div className="list-group list-group-flush scrollarea">
+                    <div className="mods-list list-group list-group-flush scrollarea">
                         <SearchBar data={data2} manager={manager} />
                         {manager.results && manager.results.map((value: Data, index: number, _array: Data[]) => (
                             <>

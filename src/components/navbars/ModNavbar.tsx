@@ -19,17 +19,17 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="navbar">
-                <ul>
-                    {value.map((value, index, array) => (
-                        <>
+            <div className="container p-0">
+                <header className="d-flex align-items-center justify-content-center py-2 mb-2 mt-2">
+                    <ul className="nav col-12 col-md-auto justify-content-center">
+                        {value.map((value) => (
                             <li>
-                                <Link href={value.path.replace('[id]', router.asPath.split('/')[2])} className={isActive(value.path)}>{value.name}</Link>
+                                <a href={value.path.replace('[id]', router.asPath.split('/')[2])} className={"nav-link px-2 link-secondary " + isActive(value.path)}>{value.name}</a>
                             </li>
-                        </>
-                    ))}
-                </ul>
-            </header>
+                        ))}
+                    </ul>
+                </header>
+            </div>
         </>
     )
 }
