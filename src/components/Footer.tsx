@@ -26,7 +26,7 @@ export default function Footer() {
                             <li className="nav-item mb-2"><a href="#" className="nav-link p-0 disabled">Docs</a></li>
                             <li className="nav-item mb-2"><a href="#" className="nav-link p-0 disabled">Status</a></li>
                             <li className="nav-item mb-2"><a href="https://github.com/roxcom-br/modustry" className="nav-link p-0">Github</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 disabled">Discord</a></li>
+                            <li className="nav-item mb-2"><a href="https://discord.gg/mXuJZV85c3" className="nav-link p-0">Discord</a></li>
                         </ul>
                     </div>
 
