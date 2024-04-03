@@ -1,7 +1,5 @@
 import { GetServerSidePropsContext } from "next";
 import { request } from "./utils";
-import { ServerType } from "./types";
-import { useState } from "react";
 
 const API_URL = process.env.API_URL
 
