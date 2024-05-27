@@ -59,9 +59,3 @@ export async function toHtml(data: string) {
     const readme = processedContent.toString()
     return readme
 }
-
-/* TEMPORARY CODE */
-
-export function serverNameToId(name: String) {
-    return name.toLowerCase().replaceAll(' ', '').replaceAll('\'', '')
-}

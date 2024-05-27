@@ -62,8 +62,13 @@ export type SearchType = {
 }
 
 export type ServerType = {
-    name: string,
-    address: string[]
+    id: string;
+    name: string;
+    icon: string;
+    address: string[];
+    prioritized: boolean;
+    modded: boolean;
+    version: string;
 }
 
 /* Props Data */
